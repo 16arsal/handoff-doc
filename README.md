@@ -15,17 +15,21 @@ You decide the solution. The skill handles the presentation. It writes the page 
 1. **The problem today.** What goes wrong and for whom, the chain of work behind it drawn as a diagram, and one real example with its consequence.
 2. **Goals and constraints.** Three outcomes and three hard limits, one line each, before any solution detail.
 3. **The vocabulary.** Every new term or state in one table, with what it means and what clears it.
-4. **The exact logic.** A decision tree of the user's own picks, and a slider over a real record's date, so two people applying the rules get the same answer.
+4. **The exact logic.** A decision tree of the user's own picks, and one real record the reader can move along the input that decides the outcome, so two people applying the rules get the same answer.
 5. **What changes on each screen.** One tab per screen the change touches, with the click path, the screen itself, and every line of text it adds.
 6. **Appendix.** A testing matrix from a real run, and the list of data the logic reads.
 
-An outline sits at the top. Every number on the page comes from running the real code on real or seeded records. The companion spec is updated in the same pass, so the page, the mockup and the spec always say the same thing.
+An outline sits at the top. A feature with no rules skips section 4, and one that adds no text keeps the screens and drops the text tables. The skill says what to do in each case rather than padding.
 
 The same skill restructures or reviews an existing doc when a reader says it jumps right into the solution, repeats itself, or is hard to follow. It also turns a meeting's outcome into a decision doc for review.
 
-## The rules it holds you to
+## What you need, and what you get
 
-Each rule exists because a reader of a real handoff page asked for it.
+You need the source (a ticket, a spec or a meeting outcome), a mockup or prototype of the screens the change touches, and ideally the code that decides the outcome, so every number on the page comes from running it. Without code, the skill builds the rules from the spec and marks every value as unverified until a run replaces it.
+
+You get an HTML page, built for desktop review, and a Markdown copy generated from it once the owner calls it final. The companion spec is updated in the same pass, so the page, the mockup and the spec always say the same thing.
+
+## The rules it holds you to
 
 - Lead with the point. A section's first sentence is what the reader must take away.
 - Each fact appears once. If a table or diagram says it, the prose does not.
@@ -64,10 +68,11 @@ Claude also picks the skill up on its own when a request matches its description
 
 - `SKILL.md`: the rules, in the order the doc is written, with how to build the logic section and the screen templates from the code.
 - `example-outline.md`: a filled-in skeleton on an illustrative feature, an order system's delivery date check.
+- `example/delivery-date-check.js`: the small engine behind that example. Every date in the outline comes from running it, which is the rule the skill holds real pages to.
 
 ## Origin
 
-I wrote this as a product owner after several review rounds on real feature handoff pages, where the same feedback kept coming back: start with the problem, say each thing once, show me where the button is. Project names, ticket numbers and the reviewers' quotes have been removed so the skill applies to any product.
+I wrote this as a product owner after several review rounds on real feature handoff pages, where the same feedback kept coming back: start with the problem, say each thing once, show me where the button is. Every rule exists because a reader asked for it. Project names, ticket numbers and the reviewers' quotes have been removed so the skill applies to any product.
 
 ## License
 
