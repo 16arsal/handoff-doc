@@ -1,13 +1,42 @@
 # handoff-doc
 
-A Claude Code skill that writes, restructures and reviews product handoff docs: the page a developer, tester or stakeholder reads to understand a feature they have never heard of, see what changes, and build or review it without asking.
+A Claude Code skill that turns a decided solution into a handoff doc that every stakeholder can read without asking questions.
 
-## What it enforces
+## The problem
 
-- **A fixed order.** The problem today (with its chain and what delays it), goals and constraints, the vocabulary, the exact logic as a decision tree of the user's picks plus a slider over a real record, what changes on each real screen with the text it shows, then an appendix with a testing matrix and the data the logic reads. An outline sits at the top.
-- **Rules a new reader needs.** Lead with the point, each fact once, define before use, no abbreviations, one word one meaning, a click path for every button, real data run through the real code, no invented features, cut don't fold.
-- **How to build the hard parts.** The logic section from the deciding function, the templates from the product's string builders, Mermaid in an HTML page or artifact, a Markdown copy generated from the page.
-- **A review loop, a coherence pass and a pre-publish checklist**, and a mode that turns a meeting's outcome into a decision doc.
+A product owner's work runs in a loop. A need comes in from a client or a user. You work out the best way to meet it, test the idea against the product's real data and rules, and build a mockup. Then comes the part that takes the longest and shows the least: explaining it. The developer wants every screen and every line of text. The tester wants the cases. The manager wants the goals and the limits. The client wants to see their problem, not your solution. None of them were in the room when the solution took shape, and each of them reads a different page.
+
+Pages written by the people who designed a feature tend to fail those readers in the same ways. They open with the solution before the problem. They use the team's vocabulary before explaining it. They say the same fact in three sections and leave out the one screen the developer needed. The reader asks in a thread, the page gets patched, and the mockup and the spec drift apart.
+
+## What the skill does
+
+You decide the solution. The skill handles the presentation. It writes the page in a fixed order that a reader who has never heard of the problem can follow from top to bottom:
+
+1. **The problem today.** What goes wrong and for whom, the chain of work behind it drawn as a diagram, and one real example with its consequence.
+2. **Goals and constraints.** Three outcomes and three hard limits, one line each, before any solution detail.
+3. **The vocabulary.** Every new term or state in one table, with what it means and what clears it.
+4. **The exact logic.** A decision tree of the user's own picks, and a slider over a real record's date, so two people applying the rules get the same answer.
+5. **What changes on each screen.** One tab per screen the change touches, with the click path, the screen itself, and every line of text it adds.
+6. **Appendix.** A testing matrix from a real run, and the list of data the logic reads.
+
+An outline sits at the top. Every number on the page comes from running the real code on real or seeded records. The companion spec is updated in the same pass, so the page, the mockup and the spec always say the same thing.
+
+The same skill restructures or reviews an existing doc when a reader says it jumps right into the solution, repeats itself, or is hard to follow. It also turns a meeting's outcome into a decision doc for review.
+
+## The rules it holds you to
+
+Each rule exists because a reader of a real handoff page asked for it.
+
+- Lead with the point. A section's first sentence is what the reader must take away.
+- Each fact appears once. If a table or diagram says it, the prose does not.
+- Define before use, and never use abbreviations.
+- Every button or screen named gets its click path.
+- Product text reads as professional sentences. Labels are one or two words.
+- Cut, don't fold. A cluttered section gets shorter, not hidden behind Show or Hide.
+- Real data, or seeded data the code computes. Never an estimate.
+- No invented features. Anything extra goes in a separate follow-up doc.
+
+The full list, with the reasoning and examples, is in `SKILL.md`.
 
 ## Install
 
@@ -17,7 +46,7 @@ Clone it into your user skills folder. The folder must be named `handoff-doc`, m
 git clone https://github.com/16arsal/handoff-doc ~/.claude/skills/handoff-doc
 ```
 
-Or copy the folder into a project's `.claude/skills/` to share it with that repo.
+Or copy the folder into a project's `.claude/skills/` to share it with everyone on that repo.
 
 ## Use
 
@@ -33,12 +62,12 @@ Claude also picks the skill up on its own when a request matches its description
 
 ## Files
 
-- `SKILL.md`: the rules, in the order the doc is written.
-- `example-outline.md`: a filled-in skeleton on an illustrative feature (an order system's delivery date check).
+- `SKILL.md`: the rules, in the order the doc is written, with how to build the logic section and the screen templates from the code.
+- `example-outline.md`: a filled-in skeleton on an illustrative feature, an order system's delivery date check.
 
 ## Origin
 
-Distilled from several review rounds on real feature handoff pages. Every rule is there because a reader asked for it. Project names, ticket numbers and reviewers' quotes have been removed so the skill applies to any product.
+I wrote this as a product owner after several review rounds on real feature handoff pages, where the same feedback kept coming back: start with the problem, say each thing once, show me where the button is. Project names, ticket numbers and the reviewers' quotes have been removed so the skill applies to any product.
 
 ## License
 
